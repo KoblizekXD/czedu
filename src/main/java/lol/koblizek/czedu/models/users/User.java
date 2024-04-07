@@ -1,6 +1,9 @@
 package lol.koblizek.czedu.models.users;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import lol.koblizek.czedu.util.validation.Nationality;
+import org.hibernate.annotations.Nationalized;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,7 +19,14 @@ public abstract class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
-
+    private String firstName;
+    private String lastName;
+    @Email
+    private String email;
+    private String password;
+    private String phoneNumber;
+    @Nationality
+    private String nationality;
     @ElementCollection(targetClass = Role.class)
     private List<Role> roles;
 
