@@ -16,6 +16,9 @@ public class School {
     @Column(nullable = false)
     private String address;
     private String description;
+    private String website;
+    @OneToOne
+    private SchoolPeriodTimings periodTimings;
 
     // TODO: List of students, teachers, head teachers, classes, subjects, etc.
 }
