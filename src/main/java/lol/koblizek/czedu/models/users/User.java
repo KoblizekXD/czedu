@@ -13,6 +13,7 @@ import java.util.List;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
+@Table(name = "users")
 public abstract class User implements UserDetails {
 
     @Id
@@ -36,6 +37,19 @@ public abstract class User implements UserDetails {
     @ElementCollection(targetClass = Role.class)
     private List<Role> roles;
     private String gender;
+    @Column(nullable = false)
+    private LocalDateTime dob;
+
+    /**
+     * Profile picture URL
+     */
+    @Column(name = "profile_picture")
+    private String profilePicture;
+    /**
+     * Additional information about the user issued by school
+     */
+    @Column(name = "additional_info")
+    private String additionalInfo;
 
     // TODO: Add remaining columns when they're added, such as Classes, Schools etc.
 
