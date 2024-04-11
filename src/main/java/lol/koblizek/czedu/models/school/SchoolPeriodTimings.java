@@ -20,13 +20,22 @@ public final class SchoolPeriodTimings {
     private School school;
     private final LocalTime defaultStartTime;
     private final int defaultPeriodLength;
+    private double[] breakTimes;
 
     SchoolPeriodTimings(LocalTime defaultStartTime, int defaultPeriodLength) {
         this.defaultStartTime = defaultStartTime;
         this.defaultPeriodLength = defaultPeriodLength;
+        this.breakTimes = new double[] { 5d * 60 };
     }
 
     public SchoolPeriodTimings() {
         this(LocalTime.of(8, 0), 45);
+    }
+
+    /**
+     * @param breakTime Breaks between periods in seconds
+     */
+    public void withBreaks(double... breakTime) {
+        this.breakTimes = breakTime;
     }
 }
